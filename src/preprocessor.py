@@ -1,4 +1,4 @@
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np
@@ -7,9 +7,10 @@ import numpy as np
 class DataPreprocessor:
     def __init__(self):
         self.scaler = StandardScaler()
+        self.label_encoder = LabelEncoder()
 
     def encode_labels(self, df: pd.DataFrame) -> pd.DataFrame:
-        df["Label"] = np.where(df['Label'] == 'BENIGN', 0 , 1)
+        df["Label"] = self.label_encoder.fit_transform(df["Label"])
         return df
 
     def split_features_and_target(self, df: pd.DataFrame):
