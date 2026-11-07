@@ -5,10 +5,11 @@ class ModelEvaluator:
         pass
 
     def evaluate(self, y_true, y_pred, model_name="Model"):
+
         accuracy = accuracy_score(y_true, y_pred)
-        precision = precision_score(y_true, y_pred)
-        recall = recall_score(y_true, y_pred)
-        f1 = f1_score(y_true, y_pred)
+        precision = precision_score(y_true, y_pred, average='weighted')
+        recall = recall_score(y_true, y_pred, average='weighted')
+        f1 = f1_score(y_true, y_pred, average='weighted')
         
         print(f"Accuracy = {accuracy} \n Precision= {precision} \n Recall= {recall} \n F1= {f1}  \n\n")
     
