@@ -25,6 +25,8 @@ def main() :
     X, y = preprocessor.split_features_and_target(new_df)
     X_train_scaled, X_test_scaled, y_train, y_test = preprocessor.scale_and_split(X, y)
 
+    print("Classes found:", preprocessor.label_encoder.classes_)
+
     # ==========================================
     # 3. Train model
     # ==========================================
