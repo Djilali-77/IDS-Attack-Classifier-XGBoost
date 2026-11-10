@@ -6,6 +6,8 @@ from src.evaluate import ModelEvaluator
 from src.tunnel import ModelTuner
 import pandas as pd
 import numpy as np
+import joblib
+import os
 
 def main() :
     print("1. Loading and cleaning data... \n")
@@ -73,6 +75,11 @@ def main() :
     best_rf.fit(X_train_scaled, y_train)
     best_xgb.fit(X_train_scaled, y_train)
 
+    os.makedirs("saved_models", exist_ok=True)
+    joblib.dump( best_xgb , "saved_models/xgb_model.pkl")
+    joblib.dump( preprocessor.scaler , "saved_models/preprocessor_scaler.pkl")
+    joblib.dump( preprocessor.label_encoder , "saved_models/label_encoder.pkl")
+
     # ==========================================
     # 4. Prediction
     # ==========================================
@@ -90,6 +97,7 @@ def main() :
     evaluator.evaluate(y_test, y_pred_xgb)
     evaluator.get_confusion_matrix(y_test, y_pred_xgb)
     evaluator.print_full_report(y_test, y_pred_xgb)
+    
 
 if __name__ == "__main__":
 
