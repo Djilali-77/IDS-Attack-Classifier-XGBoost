@@ -11,4 +11,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # We use api.main_api because your file is api/main_api.py based on earlier context
-CMD ["uvicorn", "api.main_api:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
