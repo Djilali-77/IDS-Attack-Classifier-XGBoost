@@ -14,6 +14,7 @@ An End-to-End, Full-Stack MLOps project that leverages Supervised Machine Learni
 
 ## 🏗️ System Architecture
 The machine learning pipeline is built with a modular, production-ready Object-Oriented design:
+
 1. **DataLoader:** Ingests the raw CICIDS2017 CSV files, merges them, and cleans infinite/NaN values.
 2. **Preprocessor:** Handles feature scaling (`StandardScaler`) and label encoding (`LabelEncoder`).
 3. **Model Tuner:** Uses `RandomizedSearchCV` to dynamically find the optimal hyperparameters for the ensemble models.
@@ -42,10 +43,11 @@ Because the entire application is containerized, you don't need to install Pytho
 - [Docker](https://www.docker.com/products/docker-desktop/) installed and running on your machine.
 
 ### Installation & Execution
+
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Djilali-77/attack_classification.git
-   cd attack_classification
+   git clone https://github.com/Djilali-77/IDS-Attack-Classifier-XGBoost.git
+   cd IDS-Attack-Classifier-XGBoost
    ```
 
 2. **Build and start the application:**
