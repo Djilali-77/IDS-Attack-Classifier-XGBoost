@@ -3,7 +3,8 @@ from pydantic import BaseModel
 import joblib
 import pandas as pd
 from fastapi.middleware.cors import CORSMiddleware
-
+from fastapi import File, UploadFile
+import io
 
 app = FastAPI(title="Network Intrusion Detection API", version="1.0")
 
@@ -51,6 +52,20 @@ def predict_attack(data: NetworkTraffic):
         # 5. Return JSON
         return {"prediction": attack_name}
             
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+@app.post("/predict-batch")
+async def predict_batch(file: UploadFile = File(...)):
+    try:
+        contents = await file.read()
+        df_input = pd.read_csv(io.BytesIO(contents))
+        X_processed = scaler.transform(df_input)
+        predictions = model.predict(X_processed)
+        attack_names = encoder.inverse_transform(predictions)
+        
+        # Example return format
+        return {"status": "success", "message": f"Processed {len(attack_names)} flows"}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
