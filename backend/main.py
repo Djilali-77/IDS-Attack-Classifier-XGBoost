@@ -3,7 +3,7 @@ from backend.src.preprocessor import DataPreprocessor
 from sklearn.preprocessing import LabelEncoder
 from backend.src.models import IntrusionDetectionModels
 from backend.src.evaluate import ModelEvaluator
-from backend.src.tunnel import ModelTuner
+from backend.src.tuner import ModelTuner
 import pandas as pd
 import numpy as np
 import joblib
@@ -11,7 +11,7 @@ import os
 
 def main() :
     print("1. Loading and cleaning data... \n")
-    DATA_DIR = './data/'
+    DATA_DIR = '../data/'
     loader = NetworkDataLoader(DATA_DIR)
     final_data = loader.get_clean_data()
 
