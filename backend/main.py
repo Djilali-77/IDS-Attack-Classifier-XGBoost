@@ -1,9 +1,9 @@
-from src.data_loader import NetworkDataLoader
-from src.preprocessor import DataPreprocessor
+from backend.src.data_loader import NetworkDataLoader
+from backend.src.preprocessor import DataPreprocessor
 from sklearn.preprocessing import LabelEncoder
-from src.models import IntrusionDetectionModels
-from src.evaluate import ModelEvaluator
-from src.tunnel import ModelTuner
+from backend.src.models import IntrusionDetectionModels
+from backend.src.evaluate import ModelEvaluator
+from backend.src.tunnel import ModelTuner
 import pandas as pd
 import numpy as np
 import joblib
