@@ -26,14 +26,22 @@ const ScanResult = ({ result }) => {
       </div>
       
       {isDanger && (
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 1, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
           className="mt-2 text-red-300 font-mono text-sm"
         >
-          [ ACTION REQUIRED: BLOCKING SOURCE IP ]
+          [ RECOMMENDED: INVESTIGATE THE SOURCE ]
         </motion.p>
+      )}
+
+      {result.breakdown && (
+        <ul className="mt-4 text-sm font-mono text-gray-300 space-y-1">
+          {Object.entries(result.breakdown).map(([name, count]) => (
+            <li key={name}>{name}: {count}</li>
+          ))}
+        </ul>
       )}
     </motion.div>
   );
