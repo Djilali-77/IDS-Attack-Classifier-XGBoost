@@ -12,10 +12,10 @@ function App() {
       {/* --- (Header) --- */}
       <header className="mb-10 text-center">
         <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
-          🛡️ Zero-Day IDS Radar
+          🛡️ Attack Profiler
         </h1>
-        <p className="text-gray-400 mt-2 text-sm">Advanced Network Traffic Anomaly Detection</p>
-      </header>
+        <p className="text-gray-400 mt-2 text-sm">Network Flow Classification with XGBoost</p>
+        </header>
 
       {/* ---  (Main Content) --- */}
       <main className="w-full max-w-4xl space-y-8">
