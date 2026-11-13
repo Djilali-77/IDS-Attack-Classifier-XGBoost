@@ -1,14 +1,11 @@
-version: '3.8'
-
 services:
   backend:
     build: ./backend
-    ports: 
+    ports:
       - "8000:8000"
     volumes:
       - ./backend:/app
     environment:
-      # Optional: Good practice for Python apps
       - PYTHONUNBUFFERED=1
 
   frontend:
@@ -17,7 +14,6 @@ services:
       - "5173:5173"
     volumes:
       - ./frontend:/app
-      # Anonymous volume for node_modules to prevent local host overwriting it
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
