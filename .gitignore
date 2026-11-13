@@ -1,1 +1,11 @@
 __pycache__/
+*.pyc
+venv/
+.venv/
+.env
+.DS_Store
+node_modules/
+dist/
+data/
+project_code_context.txt
+me.py
