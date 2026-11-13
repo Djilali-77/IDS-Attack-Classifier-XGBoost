@@ -19,15 +19,16 @@ const BatchUpload = ({ setScanResult }) => {
     formData.append("file", file);
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/predict-batch", formData, {
+      const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+      const response = await axios.post(`${API_URL}/predict-batch`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
       setScanResult(response.data);
     } catch (error) {
-      console.error("Error uploading file: ", error);
-      setScanResult({ status: 'danger', message: 'Error processing the CSV file.' });
+      const detail = error.response?.data?.detail || "Error processing the CSV file.";
+      setScanResult({ status: 'danger', message: String(detail) });
     }
   };
 

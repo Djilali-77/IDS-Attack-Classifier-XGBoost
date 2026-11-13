@@ -21,15 +21,16 @@ const TrafficForm = ({ setScanResult }) => {
     setScanResult(null);
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/predict", {
-        features: formData 
+      const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+      const response = await axios.post(`${API_URL}/predict`, {
+        features: formData
       });
       
       setScanResult(response.data);
       
     } catch (error) {
-      console.error("Error calling API: ", error);
-      setScanResult({ status: 'danger', message: 'Connection Error to Backend' });
+      const detail = error.response?.data?.detail || "Connection Error to Backend";
+      setScanResult({ status: 'danger', message: String(detail) });
     }
   };
 
